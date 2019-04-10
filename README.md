@@ -1,6 +1,8 @@
 # Algorithms-In-Java
 Various algorithms expressed in Java
 
+(1) Points and Segments
+
 One of the questions in Coursera's Algorithms and Data Structures
 
 Commandline input:
