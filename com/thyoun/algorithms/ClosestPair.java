@@ -11,7 +11,7 @@ package com.thyoun.algorithms;
  *
  *  Note: could speed it up by comparing square of Euclidean distances
  *  instead of Euclidean distances.
- *  Original Copyright © 2000–2017, Robert Sedgewick and Kevin Wayne. 
+ *  Original Copyright ï¿½ 2000ï¿½2017, Robert Sedgewick and Kevin Wayne. 
  *  Last updated: Fri Oct 20 12:50:46 EDT 2017.
  *  Current version made by Taihwa Youn(taihwayoun@gmail.com) on 04/10/2019
  ******************************************************************************/
@@ -107,7 +107,7 @@ public class ClosestPair {
         double delta = Math.min(delta1, delta2);
 
         // merge back so that pointsByY[lo..hi] are sorted by y-coordinate
-        merge(pointsByY, aux, lo, mid, hi);
+        Arrays.sort(pointsByY, (p1, p2)->(int)Math.signum(p1.getY()- (p2.getY())));
 
         // aux[0..m-1] = sequence of points closer than delta, sorted by y-coordinate
         int m = 0;
