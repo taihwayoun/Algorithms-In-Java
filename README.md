@@ -32,5 +32,5 @@ If you include the time for sorting the list of the input numbers, it should be 
 
 One is a revised version of Sedgewick and Wayne's implementation, and another is my own based on the frame from Coursera's Algorithms and Data Structures.
 
-Input: number of coordinates followed by the coordinates
-Output: the smallest distance from two points
+* Input: number of coordinates followed by the coordinates
+* Output: the smallest distance from two points
