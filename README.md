@@ -28,7 +28,7 @@ the output comes to:
 Running time: 
 If you include the time for sorting the list of the input numbers, it should be O(n*logn). Otherwise, it is linear.
 
-<h4>(2) Closet points on a 2D plane</h4>
+<h4>(2) Closest Points on a 2D Plane</h4>
 
 One is a revised version of Sedgewick and Wayne's implementation, and another is my own based on the frame from Coursera's Algorithms and Data Structures.
 
