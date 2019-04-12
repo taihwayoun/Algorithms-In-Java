@@ -166,34 +166,10 @@ public class ClosestPair {
         return bestDistance;
     }
 
-    // is v < w ?
-    private static boolean less(Point2D a, Point2D b) {
-        return (int)Math.signum(a.getY()- b.getY()) < 0;
-    }
-
-    // stably merge a[lo .. mid] with a[mid+1 ..hi] using aux[lo .. hi]
-    // precondition: a[lo .. mid] and a[mid+1 .. hi] are sorted subarrays
-    private static void merge(Point2D[] a, Point2D[] aux, int lo, int mid, int hi) {
-        // copy to aux[]
-        for (int k = lo; k <= hi; k++) {
-            aux[k] = a[k];
-        }
-    
-        // merge back to a[] 
-        int i = lo, j = mid+1;
-        for (int k = lo; k <= hi; k++) {
-            if      (i > mid)              a[k] = aux[j++];
-            else if (j > hi)               a[k] = aux[i++];
-            else if (less(aux[j], aux[i])) a[k] = aux[j++];
-            else                           a[k] = aux[i++];
-        }
-    }
-
-
-
-   /**
+    /**
      * Unit tests the {@code ClosestPair} data type.
      * Reads in an integer {@code n} and {@code n} points (specified by
+     * 
      * their <em>x</em>- and <em>y</em>-coordinates) from standard input;
      * computes a closest pair of points; and prints the pair to standard
      * output.
