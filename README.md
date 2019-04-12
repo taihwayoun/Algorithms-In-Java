@@ -1,7 +1,7 @@
 # Algorithms-In-Java
 Various algorithms expressed in Java
 
-(1) Points and Segments
+<h4>(1) Points and Segments</h4>
 
 One of the questions in Coursera's Algorithms and Data Structures
 
@@ -27,3 +27,10 @@ the output comes to:
 
 Running time: 
 If you include the time for sorting the list of the input numbers, it should be O(n*logn). Otherwise, it is linear.
+
+<h4>(2) Closest Points on a 2D Plane</h4>
+
+One is a revised version of Sedgewick and Wayne's implementation, and another is my own based on the frame from Coursera's Algorithms and Data Structures.
+
+* Input: number of coordinates followed by the coordinates
+* Output: the smallest distance from two points
