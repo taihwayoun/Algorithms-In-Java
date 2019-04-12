@@ -11,12 +11,14 @@ package com.thyoun.algorithms;
  *
  *  Note: could speed it up by comparing square of Euclidean distances
  *  instead of Euclidean distances.
- *  Original Copyright � 2000�2017, Robert Sedgewick and Kevin Wayne. 
+ *  Original Copyright © 2000–2017, Robert Sedgewick and Kevin Wayne. 
  *  Last updated: Fri Oct 20 12:50:46 EDT 2017.
  *  Current version made by Taihwa Youn(taihwayoun@gmail.com) on 04/10/2019
  ******************************************************************************/
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.lang.Math;
 
@@ -64,70 +66,55 @@ public class ClosestPair {
         if (n <= 1) return;
 
         // sort by x-coordinate (breaking ties by y-coordinate)
-        Point2D[] pointsByX = new Point2D[n];
-        for (int i = 0; i < n; i++)
-            pointsByX[i] = points[i];
-        
-        Arrays.sort(pointsByX, (p1, p2)->(int)Math.signum(p1.getX()- (p2.getX())));
+       
+        Arrays.sort(points, (p1, p2)->(int)Math.signum(p1.getX()- (p2.getX())));
 
         // check for coincident points
         for (int i = 0; i < n-1; i++) {
-            if (pointsByX[i].equals(pointsByX[i+1])) {
+            if (points[i].equals(points[i+1])) {
                 bestDistance = 0.0;
-                best1 = pointsByX[i];
-                best2 = pointsByX[i+1];
+                best1 = points[i];
+                best2 = points[i+1];
                 return;
             }
         }
 
-        // sort by y-coordinate (but not yet sorted) 
-        Point2D[] pointsByY = new Point2D[n];
-        for (int i = 0; i < n; i++)
-            pointsByY[i] = pointsByX[i];
-
-        // auxiliary array
-        Point2D[] aux = new Point2D[n];
-
-        closest(pointsByX, pointsByY, aux, 0, n-1);
+        closest(points, 0, n-1);
     }
 
-    // find closest pair of points in pointsByX[lo..hi]
-    // precondition:  pointsByX[lo..hi] and pointsByY[lo..hi] are the same sequence of points
-    // precondition:  pointsByX[lo..hi] sorted by x-coordinate
+    // find closest pair of points in points[lo..hi]
     // postcondition: pointsByY[lo..hi] sorted by y-coordinate
-    private double closest(Point2D[] pointsByX, Point2D[] pointsByY, Point2D[] aux, int lo, int hi) {
+    private double closest(Point2D[] pointsByY, int lo, int hi) {
         if (hi <= lo) return Double.POSITIVE_INFINITY;
 
         int mid = lo + (hi - lo) / 2;
-        Point2D median = pointsByX[mid];
+        Point2D median = pointsByY[mid];
 
         // compute closest pair with both endpoints in left subarray or both in right subarray
-        double delta1 = closest(pointsByX, pointsByY, aux, lo, mid);
-        double delta2 = closest(pointsByX, pointsByY, aux, mid+1, hi);
-        double delta = Math.min(delta1, delta2);
+        double delta = Math.min(closest(pointsByY, lo, mid), closest(pointsByY, mid+1, hi));
 
-        // merge back so that pointsByY[lo..hi] are sorted by y-coordinate
         Arrays.sort(pointsByY, (p1, p2)->(int)Math.signum(p1.getY()- (p2.getY())));
-
-        // aux[0..m-1] = sequence of points closer than delta, sorted by y-coordinate
-        int m = 0;
+        
+        // aux = sequence of points closer than delta, sorted by y-coordinate
+        List<Point2D> aux = new ArrayList<>();
+        
         for (int i = lo; i <= hi; i++) {
             if (Math.abs(pointsByY[i].getX() - median.getX()) < delta)
-                aux[m++] = pointsByY[i];
+                aux.add(pointsByY[i]);
         }
 
         // compare each point to its neighbors with y-coordinate closer than delta
+        int m=aux.size();
         for (int i = 0; i < m; i++) {
             // a geometric packing argument shows that this loop iterates at most 7 times
-            for (int j = i+1; (j < m) && (aux[j].getY() - aux[i].getY() < delta); j++) {
-                double distance = aux[i].distanceTo(aux[j]);
+            for (int j = i+1; (j < m) && (aux.get(j).getY() - aux.get(i).getY() < delta); j++) {
+                double distance = aux.get(i).distanceTo(aux.get(j));
                 if (distance < delta) {
                     delta = distance;
                     if (distance < bestDistance) {
                         bestDistance = delta;
-                        best1 = aux[i];
-                        best2 = aux[j];
-                        // StdOut.println("better distance = " + delta + " from " + best1 + " to " + best2);
+                        best1 = aux.get(i);
+                        best2 = aux.get(j);
                     }
                 }
             }
@@ -166,10 +153,9 @@ public class ClosestPair {
         return bestDistance;
     }
 
-    /**
+   /**
      * Unit tests the {@code ClosestPair} data type.
      * Reads in an integer {@code n} and {@code n} points (specified by
-     * 
      * their <em>x</em>- and <em>y</em>-coordinates) from standard input;
      * computes a closest pair of points; and prints the pair to standard
      * output.
