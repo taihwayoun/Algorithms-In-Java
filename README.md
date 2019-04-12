@@ -30,7 +30,10 @@ If you include the time for sorting the list of the input numbers, it should be 
 
 <h4>(2) Closest Points on a 2D Plane</h4>
 
-One is a revised version of Sedgewick and Wayne's implementation, and another is my own based on the frame from Coursera's Algorithms and Data Structures.
+A revised version of Sedgewick and Wayne's implementation
 
 * Input: number of coordinates followed by the coordinates
 * Output: the smallest distance from two points
+
+<h4>(3) Counting inversions</h4>
+A javascript implementation of counting inversions on an array, piggybacked on a merge-sort process
