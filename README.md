@@ -43,3 +43,4 @@ Given an array of 8 zeroes or ones, if two adjacent sides of a member are the sa
 
 <h4>(5) Two Sum</h4>
 <h4>(6) Generalized GCD</h4>
+<h4>(6) MergeSort</h4>
