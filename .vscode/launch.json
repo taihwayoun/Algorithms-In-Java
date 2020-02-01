@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TwoSum",
+            "request": "launch",
+            "mainClass": "TwoSum"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - GeneralizedGCD",
+            "request": "launch",
+            "mainClass": "GeneralizedGCD"
+        }
+    ]
+}
