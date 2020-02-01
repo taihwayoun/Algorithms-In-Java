@@ -2,6 +2,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - RoundWord",
+            "request": "launch",
+            "mainClass": "RoundWord"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - TwoSum",
             "request": "launch",
             "mainClass": "TwoSum"
