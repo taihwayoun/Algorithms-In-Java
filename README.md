@@ -37,3 +37,10 @@ A revised version of Sedgewick and Wayne's implementation
 
 <h4>(3) Counting inversions</h4>
 A javascript implementation of counting inversions on an array, piggybacked on a merge-sort process
+
+<h4>(4) Compete</h4>
+Given an array of 8 zeroes or ones, if two adjacent sides of a member are the same, the member changes to zero, and the zero-th member and 7th member is assumed to adjacent to a zero on the left (zeroth) or right (7th).
+
+<h4>(5) Two Sum</h4>
+<h4>(6) Generalized GCD</h4>
+<h4>(6) MergeSort</h4>
